@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Type Tool</title>
+	<style type="text/css">
+		#word,#view{
+			width: 100%;
+			word-wrap:break-word;
+			letter-spacing: 8px;
+			font-size: 32px;
+		}
+		.error{
+			color: #f56c6c;
+		}
+		.true{
+			color: #67c23a;
+		}
+	</style>
+</head>
+<body>
+<div id="view">ASDEDFKOLLEEROCFKLLS</div>
+<div id="word"></div>
+<script type="text/javascript">
+	let txtLen = document.getElementById('view').innerText.length;
+	let i = 0;
+	document.onkeydown=function(event) {
+		let modeTxt = document.getElementById('view').innerText.substring(i,i+1);
+		let spanEle = document.createElement("span");
+		let spanEleTxt = document.createTextNode(event.key.toUpperCase());
+		spanEle.appendChild(spanEleTxt);
+		if (modeTxt===event.key.toUpperCase()){
+		    spanEle.classList.add('true');
+		    i++;
+		} else {
+		    spanEle.classList.add('error');
+		    alert("打错喽~")
+		}
+		document.getElementById('word').appendChild(spanEle);
+	}
+</script>
+</body>
+</html>
